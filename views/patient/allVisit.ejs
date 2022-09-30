@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <% if(visits.length>0) {%>
+        <% for(let i=0;i< visits.length;i++){ %>
+            <h3><%= visits[i]._id %></h3>
+            <p><%= visits[i].patient %></p>
+            <p><%= visits[i].doctor %></p>
+            <p><%= visits[i].diagnostic %></p>
+            <p><%= visits[i].prescription %></p>
+     <% }} %>   
+
+</body>
+</html>
