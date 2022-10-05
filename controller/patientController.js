@@ -5,6 +5,7 @@ const Visit=require("../models/visit")
 const patientDetails=(req,res)=>{
     const id=req.params.id;
     Patient.findById(id).then((result)=>{
+        console.log(typeof result)
         res.render("patient/details",{patient:result})
     }).catch(err=>{
         res.status(404).render("404")
