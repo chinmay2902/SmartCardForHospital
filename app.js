@@ -22,8 +22,8 @@ app.use(express.static("public"))
 app.use(morgan("dev"));
 app.use(express.urlencoded({extended:false}))
 
-app.get("/",(req,res)=>{
-    res.render("index")
+app.get("/:id",(req,res)=>{    
+    res.render("index",{id:req.params.id})
 })
 
 // Doctor Routes

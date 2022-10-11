@@ -11,6 +11,10 @@ const visitSchema=new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:"Doctor"
     },
+    reason:{
+        type:String,
+        required:true
+    },
     diagnostic:{
         type:String,
         required:true

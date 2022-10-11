@@ -1,5 +1,7 @@
 const Patient=require("../models/patient")
 const Visit=require("../models/visit")
+const Doctor=require("../models/doctor")
+
 
 
 const patientDetails=(req,res)=>{
@@ -14,22 +16,24 @@ const patientDetails=(req,res)=>{
 
 const patientAllVisit=(req,res)=>{
     const id=req.params.id;
-    Visit.find({patient:id}).then((result)=>{
+    Visit.find({patient:id}).sort({"createdAt":-1}).then((result)=>{
         res.render("patient/allVisit",{visits:result})
     }).catch(err=>{
         res.status(404).render("404")
     })
 }
 
-const patientLastVisit=(req,res)=>{
-    const id=req.params.id;
-    Visit.findOne({patient:id}).sort({'_id':-1}).then((result)=>{
-        console.log(result);
-        res.render("patient/lastVisit",{visit:result})
-    }).catch(err=>{
+const patientLastVisit=async(req,res)=>{
+    try{
+        const id=req.params.id;
+        const visit=await Visit.findOne({patient:id}).sort({'_id':-1})
+        const doctor=await Doctor.findOne({id:visit.doctor})
+
+        res.render("patient/lastVisit",{visit:visit,doctor:doctor})
+    }catch(err){
         console.log(err);
         res.status(404).render("404")
-    })
+    }
 }
 
 

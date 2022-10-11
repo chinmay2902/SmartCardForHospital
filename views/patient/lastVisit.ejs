@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h3>Patient</h3>
-    <h3><%= visit._id %></h3>
-    <p><%= visit.patient %></p>
-    <p><%= visit.doctor %></p>
-    <p><%= visit.diagnostic %></p>
-    <p><%= visit.prescription %></p> 
 
+<head>
+    <%- include("../partials/head.ejs") %>
+</head>
+
+<body>
+    <%- include("../partials/nav.ejs") %>
+
+
+
+        <div class="container text-center ml-3 my-5">
+            <h2 class="mb-4">Last Visit</h2>   
+            <div class="container mb-5">
+                <h3>List Visit Reason: <%= visit.reason %></h3>
+                <small >Visit Date: <%= visit.createdAt %></small>
+            </div> 
+                
+            <div class="container m-5">
+                <h4>Diagnostic</h4>
+                <p><%= visit.diagnostic %></p>
+            </div>
+
+            <div class="container m-5">
+                <h4>Prescription</h4>
+                <p><%= visit.prescription %></p>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h4>Doctor:</h4>
+                </div>
+                <div class="col">
+                   <p><%= doctor.name %>(<small><%= doctor.degree %></small>)</p> 
+                   
+                </div>
+            </div>
+            
+        </div>
+
+        <%- include("../partials/footer.ejs")%>
 
 </body>
+
 </html>

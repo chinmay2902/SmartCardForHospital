@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head.ejs") %>
+</head>
+
+<body>
+   <%- include("../partials/nav.ejs") %>
+
+
+    <div class="container mt-5 mx-auto" style="width: 45%;">
+      <h2 class="text-center mb-5">Add Visit</h2>
+        <form action="/doctor/<%=id%>/addVisit" method="POST">
+            <div class="form-floating mb-3">
+                <input  class="form-control" id="patient" placeholder="My patient" style="height:200px" name="patient" value="<%= id %>" >
+                <label for="patient">patient</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input  class="form-control" id="doctor" placeholder="My doctor" style="height:200px" name="doctor" value="63372f4ae07e47409105b37e">
+                <label for="doctor">doctor</label>
+              </div>
+            <div class="form-floating mb-3">
+                <textarea  class="form-control" id="diagnostic" placeholder="My diagnostic" style="height:200px" name="diagnostic"></textarea>
+                <label for="diagnostic">diagnostic</label>
+              </div>
+            <div class="form-floating mb-3">
+              <textarea  class="form-control" id="prescription" placeholder="My prescription." style="height:200px" name="prescription"></textarea>
+              <label for="prescription">prescription</label>
+            </div>
+            
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+          </form>     
+    </div>
+
+      <%- include("../partials/footer.ejs")%>
+      
+</body>
+</html>

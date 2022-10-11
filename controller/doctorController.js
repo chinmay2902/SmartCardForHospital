@@ -2,6 +2,19 @@ const Patient=require("../models/patient")
 const Visit=require("../models/visit")
 const Doctor=require("../models/doctor")
 
+const checkDoctorRender=(req,res)=>{
+    res.render("doctor/checkDoctor.ejs",{id:req.params.id})
+}
+
+const checkDoctor=async (req,res)=>{
+    const doctor=await Doctor.findOne({doctorCode:req.body.doctorCode})
+    if(doctor.doctorPass==req.body.doctorPass){
+        res.redirect("/doctor/"+req.params.id+"/details")
+    }else{
+        res.send("Not Auth")
+    }
+}
+
 const patientDetails=async (req,res)=>{
     const id=req.params.id;
     try{
@@ -24,12 +37,17 @@ const addVisit=(req,res)=>{
     const visit=new Visit(req.body)
 
     visit.save().then((result)=>{
-        res.render("doctor/addVisit",{id:req.body.patient});
+        res.redirect("/doctor/"+req.params.id+"/details");
     })
 }
 
+
+
 module.exports={
+    checkDoctorRender,
+    checkDoctor,
     patientDetails,
     addVisitRender,
-    addVisit
+    addVisit,
+
 }

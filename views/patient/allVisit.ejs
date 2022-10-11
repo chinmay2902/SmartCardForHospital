@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include("../partials/head.ejs") %>
 </head>
+
 <body>
-    
+   <%- include("../partials/nav.ejs") %>
+
     <% if(visits.length>0) {%>
         <% for(let i=0;i< visits.length;i++){ %>
-            <h3><%= visits[i]._id %></h3>
-            <p><%= visits[i].patient %></p>
-            <p><%= visits[i].doctor %></p>
-            <p><%= visits[i].diagnostic %></p>
-            <p><%= visits[i].prescription %></p>
+            <!-- <h3><%= visits[i]._id %></h3> -->
+            <div class="container text-center ml-3 my-5">
+                <div class="card p-3">
+                    <h3>Reason: <%= visits[i].reason %></h3>
+                    <small class="mb-4">Vist Date: <%= visits[i].createdAt %></small>
+                    <h5>Diagnostic</h5>
+                    <p><%= visits[i].diagnostic %></p>
+                    <h5>Prescription</h5>
+                    <p> <%= visits[i].prescription %></p>
+                </div>
+            </div>
      <% }} %>   
 
+  <%- include("../partials/footer.ejs")%>
+    
 </body>
+
 </html>

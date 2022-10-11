@@ -6,6 +6,14 @@ const doctorSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    doctorCode:{
+        type:String,
+        required:true
+    },
+    doctorPass:{
+        type:String,
+        required:true
+    },
     degree:{
         type:String,
         required:true
